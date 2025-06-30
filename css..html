@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>现代CSS布局指南</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+        :root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  --accent: #e74c3c;
+}
+
+.layout-section {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.code-sample {
+  background: #2d3748;
+  color: white;
+}
+      :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+      }
+
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #f8f9fa;
+      }
+
+      h1 {
+        font-family: 楷体;
+        color: var(--primary);
+        border-bottom: 3px solid var(--secondary);
+        padding-bottom: 1rem;
+      }
+
+      .layout-section {
+        background: white;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .abstract {
+        background: #f1f5f9;
+        padding: 1.5rem;
+        border-left: 4px solid var(--secondary);
+      }
+
+      .code-sample {
+        font-family: Consolas, monospace;
+        background: #2d3748;
+        color: white;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+
+      .properties-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>现代网页布局解析</h1>
+
+    <div class="layout-section">
+      <h2 id="CSSbase">弹性盒子布局</h2>
+      <div class="abstract">
+        <p>Flexbox 通过主轴和交叉轴的概念实现灵活布局，特别适合一维布局场景。</p>
+        <div class="code-sample">
+          .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+          }
+        </div>
+      </div>
+
+      <div class="properties-grid">
+        <div>
+          <h3>容器属性</h3>
+          <ul>
+            <li>flex-direction</li>
+            <li>flex-wrap</li>
+            <li>justify-content</li>
+          </ul>
+        </div>
+        <div>
+          <h3>项目属性</h3>
+          <ul>
+            <li>flex-grow</li>
+            <li>flex-shrink</li>
+            <li>align-self</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <h2 style="color: var(--accent)">网格布局系统</h2>
+      <p>
+        深入学习：
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Grid_Layout" target="_blank">
+          MDN网格文档
+        </a>
+        <span style="margin: 0 1rem">|</span>
+        <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">
+          CSS Tricks指南
+        </a>
+      </p>
+      
+      <div class="code-sample">
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 2rem;
+        }
+      </div>
+    </div>
+  </body>
+</html>

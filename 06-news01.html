@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象与DOM实战</title>
+    <script>
+        class Student {
+            constructor(name, age, school, grade) {
+                this.name = name;
+                this.age = age;
+                this.school = school;
+                this.grade = grade;
+            }
+
+            learn(subject = '语文') {
+                // 控制台样式化输出
+                console.log('%c📚 ${this.name}正在学习${subject}', 'color: #2ecc71; font-weight: bold');
+                
+                // DOM交互动画
+                #demo {
+                  transition: all 0.3s;
+                  color: var(--primary);
+                }
+            }
+
+            exam() {
+                console.log(`%c🕒 ${this.name}进入考试状态`, 
+                    'color: #e67e22');
+            }
+        }
+
+        class Undergraduate extends Student {
+            constructor(name, age, school, grade, major, experience) {
+                super(name, age, school, grade);
+                this.major = major;
+                this.experience = experience;
+            }
+
+            intern(corp) {
+                console.log(`%c🏢 ${this.name}在${corp}实习`, 
+                    'color: #3498db; border-bottom: 2px dashed #2980b9');
+                super.exam();
+            }
+        }
+
+        // 实例化对象
+        const xm = new Undergraduate('小明', 20, '科技大学', 3, '计算机科学', 500);
+        xm.learn('Web开发');
+        xm.intern('阿里巴巴');
+
+        // 异步示例
+        console.log('%c⏳ 开始数据加载...', 'color: #95a5a6');
+        setTimeout(() => {
+            console.log('%c✅ 用户数据加载完成', 'color: #27ae60');
+            document.dispatchEvent(new Event('data-loaded'));
+        }, 1500);
+    </script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', 微软雅黑, sans-serif;
+            background: #f8f9fa;
+        }
+
+        #demo {
+            color: var(--primary);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        #demo:hover {
+            transform: translateY(-3px);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="demo">前端开发实战演示</h1>
+    <div class="card">
+        <p id="status">等待数据加载...</p>
+    </div>
+
+    <script>
+        document.addEventListener('data-loaded', () => {
+            const demo = document.getElementById('demo');
+            demo.innerHTML = '数据交互已就绪 🚀';
+            demo.style.textShadow = '2px 2px 4px rgba(0,0,0,0.1)';
+
+            document.getElementById('status').innerHTML = 
+                '%c✅ 最新状态：数据加载完成';
+        });
+    </script>
+</body>
+</html>
