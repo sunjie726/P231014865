@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 异步编程练习</title>
+</head>
+
+<body>
+    <h1>JavaScript 异步编程练习</h1>
+    <div id="demo">
+
+    </div>
+    <script>
+        async function getSomething() {
+            await setTimeout(function () {
+                console.log('111111')
+            }, 2000)
+        }
+        getSomething()
+            .then(
+                result => console.log('Async function finished successfully with result:', result)
+            )
+        console.log('2222222')
+        <style>
+        :root {
+          --primary: #2c3e50;
+          --secondary: #3498db;
+          --accent: #e74c3c;
+          --success: #27ae60;
+        }
+
+        body {
+          background: #f8f9fa;
+          color: var(--primary);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+          color: var(--secondary);
+          border-bottom: 3px solid var(--accent);
+          padding-bottom: 0.5rem;
+        }
+
+        #demo {
+          background: white;
+          padding: 1rem;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        </style>
+
+        async function getLastPushedDate(owner, repo) {
+            const url = `https://api.github.com/repos/${owner}/${repo}`;
+            console.log('%c⏳ 开始执行异步操作', 'color: var(--secondary); font-weight: bold');
+
+            setTimeout(() => {
+              console.log('%c✅ 定时器回调完成', 'color: var(--success)');
+            }, 2000);
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    console.error('%c⚠️ 请求失败: %s', 'color: var(--accent)', error.message);
+                    throw new Error('网络响应失败');
+                }
+                const data = await response.json();
+                // pushed_at 字段即为最后一次推送日期
+                return data.pushed_at;
+            } catch (error) {
+                console.error('获取推送日期失败:', error);
+                return null;
+            }
+        }
+
+        // 示例调用
+        getLastPushedDate('yangjh-xbmu', 'Web-develop').then(date => {
+            console.log('最后一次推送日期:', date);
+            document.getElementById('demo').innerText = '最后一次推送日期: ' + date;
+            document.getElementById('demo').style.color = var(--secondary);
+        });
+        // ... existing code ...
+
+    </script>
+</body>
+
+</html>

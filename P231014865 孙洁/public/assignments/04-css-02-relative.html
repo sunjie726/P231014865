@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>定位模式对比演示</title>
+    <style type="text/css">
+      :root {
+        --primary: #2c3e50;
+        --accent: #6c5ce7;
+        --highlight: #00b894;
+      }
+
+      body {
+        width: 960px;
+        margin: 0 auto;
+        font-family: 'Segoe UI', 微软雅黑, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      div {
+        width: 300px;
+        float: left;
+        margin: 0 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .relative {
+        position: relative;
+        top: 30px;
+        background-color: rgba(108,92,231,0.1);
+        border: 2px solid var(--accent);
+      }
+
+      .absolute {
+        position: absolute;
+        top: 30px;
+        background-color: rgba(0,184,148,0.1);
+        border: 2px solid var(--highlight);
+      }
+
+      .bg {
+        padding: 12px;
+        border-radius: 4px;
+        background-color: rgba(255,107,107,0.1);
+        border: 2px solid #ff6b6b;
+      }
+
+      h2 {
+        color: var(--primary);
+        border-bottom: 2px solid currentColor;
+        padding-bottom: 8px;
+      }
+
+      code {
+        display: block;
+        margin-top: 1em;
+        padding: 8px;
+        background: #f3f4f6;
+        border-radius: 4px;
+        font-family: Consolas, Monaco, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>标准文档流</h2>
+      <p>这是第一个自然段的内容示例</p>
+      <p>第二个段落展示默认布局行为</p>
+      <p class="bg">未应用定位的原始元素</p>
+      <p>第四个段落用于对比参考</p>
+      <p>最后一个段落保持默认位置</p>
+    </div>
+
+    <div style="position: relative">
+      <h2>相对定位</h2>
+      <p>第一个相对定位段落</p>
+      <p>保持文档流中的原位置</p>
+      <p class="bg relative">偏移30px（保留原空间）</p>
+      <p>后续元素不受影响</p>
+      <p>最后一个相对定位示例</p>
+      <code>.relative { position: relative; top:30px; }</code>
+    </div>
+
+    <div style="position: relative">
+      <h2>绝对定位</h2>
+      <p>第一个绝对定位段落</p>
+      <p>脱离正常文档流</p>
+      <p class="bg absolute">相对最近定位祖先偏移</p>
+      <p>后续元素会填补空缺</p>
+      <p>最后一个绝对定位示例</p>
+      <code>.absolute { position: absolute; top:30px; }</code>
+    </div>
+  </body>
+</html>

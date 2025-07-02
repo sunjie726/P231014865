@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 核心概念解析</title>
+    <style>
+      /* 新增CSS变量系统 */
+      :root {
+        --primary: #2c3e50;
+        --accent: #6c5ce7;
+        --success: #00b894;
+      }
+      
+      /* 优化交動動畫 */
+      .box:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s;
+      }
+
+      body {
+        background-color: #f0f2f5;
+        line-height: 1.6;
+      }
+
+      h1 {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        padding: 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      }
+
+      section {
+        background: white;
+        margin: 2rem;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .box {
+        border: 2px solid var(--accent);
+        background: #f8f9fa;
+        transition: transform 0.3s;
+      }
+      .box:hover {
+        transform: translateY(-5px);
+      }
+
+      .flex-container p {
+        border-color: var(--accent);
+        background: rgba(108,92,231,0.1);
+      }
+
+      .animate-box {
+        background: linear-gradient(45deg, var(--accent), var(--success));
+        transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS 核心概念解析</h1>
+    
+    <section>
+      <h2>盒模型结构</h2>
+      <div>
+        <div class="box">内容区域 (content)</div>
+        <div class="box">边距演示 (margin)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Flex 布局</h2>
+      <div class="flex-container">
+        <p>弹性项 1</p>
+        <p>弹性项 2</p>
+        <p>弹性项 3</p>
+        <p>弹性项 4</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>过渡动画</h2>
+      <div class="animate-box">
+        悬停查看过渡效果
+        <div style="font-size:0.8em;margin-top:0.5rem">
+          (支持圆角、颜色渐变变换)
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

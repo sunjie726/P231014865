@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 语法</title>
+    <script>
+        <style>
+        :root {
+          --primary: #2c3e50;
+          --secondary: #3498db;
+          --accent: #e74c3c;
+          --code-bg: #f8f9fa;
+        }
+
+        body {
+          background: #ecf0f1;
+          color: var(--primary);
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        h1 {
+          color: var(--secondary);
+          border-left: 4px solid var(--accent);
+          padding-left: 1rem;
+        }
+
+        script {
+          display: block;
+          background: var(--code-bg);
+          padding: 1rem;
+          border-radius: 4px;
+          white-space: pre-wrap;
+        }
+        </style>
+        // 类和对象
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand
+                this.model = model
+                this.year = year
+            }
+            start() {
+                console.log(`汽车 ${this.brand} ${this.model} 启动了`)
+            }
+            stop() {
+                console.log(`汽车 ${this.brand} ${this.model} 停止了`)
+            }
+        }
+        let myCar = new Car('Mi', 'Yu7', 2025)
+        myCar.start()
+        myCar.stop()
+
+        class ElectricCar extends Car {
+            constructor(brand, model, year, range) {
+                super(brand, model, year)
+                this.range = range
+            }
+            charge() {
+                console.log(`电动汽车 ${this.brand} ${this.model} 正在充电`)
+            }
+        }
+        let myElectricCar = new ElectricCar('Tesla', 'Model Y', 2025, 300)
+        myElectricCar.start()
+        myElectricCar.charge()
+
+        // 回调函数练习
+        console.log('111111')
+
+        setTimeout(function () {
+            console.log('22222')
+        }, 2000)
+
+        console.log('333333')
+    </script>
+</head>
+
+<body>
+    <h1 onclick="alert('我被点击了！')">JavaScript 语法</h1>
+    <div id="demo">div content</div>
+</body>
+
+<script>
+    myDom = document.getElementById('demo')
+    console.log(myDom)
+    myDom.innerHTML = '这是从脚本动态更改的内容'
+    myDom.onclick = function () {
+        alert('我也被点击了！')
+    }
+    console.log('%c🚗 车辆实例已创建', 'color: #27ae60');
+
+    setTimeout(() => {
+        console.log('%c⏰ 异步回调执行', 'color: #8e44ad');
+    }, 2000);
+
+    myDom.style.backgroundColor = '#fff';
+    myDom.style.padding = '1rem';
+    myDom.style.border = `2px solid ${var(--secondary)}`;
+</script>
+
+</html>

@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --zootopia-primary: #FF9800;
+  --zootopia-secondary: #4CAF50;
+  --zootopia-accent: #2196F3;
+  --zootopia-dark: #263238;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Comic Sans MS', 'Marker Felt', fantasy;
+}
+
+/* 疯狂动物城主题样式 */
+.zootopia-container {
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.zootopia-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.zootopia-title {
+  color: var(--zootopia-primary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Comic Sans MS', 'Marker Felt', fantasy;
+}
+
+.zootopia-button {
+  background-color: var(--zootopia-primary);
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.zootopia-button:hover {
+  background-color: var(--zootopia-secondary);
+  transform: scale(1.05);
+}
+
+.zootopia-entry-card {
+  @apply bg-white/60 backdrop-blur-lg rounded-2xl p-6 text-center shadow-lg border border-white/30;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.zootopia-entry-card:hover {
+  @apply bg-white/80 scale-105 shadow-xl;
+}
